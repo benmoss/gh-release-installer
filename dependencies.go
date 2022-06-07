@@ -47,6 +47,15 @@ type platform struct {
 type templateArgs struct {
 	platform
 	*dependency
+	VersionNoPrefix string
+}
+
+func newTemplateArgs(p platform, d *dependency) templateArgs {
+	return templateArgs{
+		platform:        p,
+		dependency:      d,
+		VersionNoPrefix: strings.TrimLeft(d.Version, "v"),
+	}
 }
 
 type depslice []*dependency
@@ -272,7 +281,7 @@ type dependency struct {
 
 // downloads the dependency by its url template
 func (d *dependency) download(ctx context.Context, opts platform) (blob, error) {
-	templateArgs := templateArgs{opts, d}
+	templateArgs := newTemplateArgs(opts, d)
 	urlTpl, err := template.New(d.Name).Parse(d.URLTemplate)
 	if err != nil {
 		return nil, err
