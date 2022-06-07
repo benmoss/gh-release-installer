@@ -459,7 +459,7 @@ func main() {
 	})
 
 	update := newUpdateCommand()
-	update.AddCommand(newSyncChecksums())
+	rootCmd.AddCommand(newSyncChecksums())
 	rootCmd.AddCommand(newInstallCommand(), update)
 	rootCmd.Execute()
 }
