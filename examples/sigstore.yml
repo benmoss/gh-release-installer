@@ -1,0 +1,19 @@
+- checksums:
+    darwin:
+      amd64: 84a603503f843ee0ea1b394d685c221b192909aacc9312d05a709b0fab184b47
+    linux:
+      amd64: 47e2596a38e619b72e736fd171eeeaadaf6bd22d6e87a767b339168a87b62761
+  dev: false
+  name: cosign
+  repo: sigstore/cosign
+  urlTemplate: https://github.com/{{.Repo}}/releases/download/{{.Version}}/{{.Name}}-{{.OS}}-{{.Arch}}
+  version: v1.8.0
+- checksums:
+    linux:
+      amd64: 797b2c24d515f0b72fdbd3b3c1d938b9302f5d4f392a206ceaee51d487d1d70c
+      arm64: c2c0ed27fd376a24ce5b9edefb67bb9a01551705b837d37dd34b19547cc97e46
+  dev: false
+  name: gitsign
+  repo: sigstore/gitsign
+  urlTemplate: https://github.com/{{.Repo}}/releases/download/{{.Version}}/{{.Name}}_{{.VersionNoPrefix}}_{{.OS}}_{{.Arch}}
+  version: v0.1.0
