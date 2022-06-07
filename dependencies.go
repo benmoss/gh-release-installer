@@ -151,6 +151,9 @@ func newSyncChecksums() *cobra.Command {
 
 // dowlnoads, verifies checksum, and (optionally) extracts the binary from a tarball
 func (c *installCommand) Install() error {
+	if err := os.MkdirAll(c.destDir, 0755); err != nil {
+		return fmt.Errorf("creating directory: %w", err)
+	}
 	return dependencies.each(func(ctx context.Context, dep *dependency) error {
 		if c.dev && !dep.Dev {
 			return nil
